@@ -1,4 +1,5 @@
 **For launch_ecommerce.sh**
+
 How to Use:
 Make the script executable: Run the following command to make the script executable:
 
@@ -15,6 +16,57 @@ warning_prompt(): Displays a warning message to the user before launching the ap
 schedule_launch(): Asks the user how long they would like to wait (in seconds) before launching the application. It uses sleep to delay the execution.
 start_django_server(): Verifies that the manage.py file exists and starts the Django development server.
 This approach ensures that the user is aware of the launch and can schedule when to start the application.
+
+***Django Operations***
+
+1. Create Django Project
+First, ensure Django is installed in your environment. If not, install it using:
+
+bash
+Copy code
+pip install django
+Create a new Django project and app:
+
+bash
+Copy code
+django-admin startproject ecommerce
+cd ecommerce
+python manage.py startapp shop
+2. Add shop to Installed Apps
+In ecommerce/settings.py, add the shop app to the INSTALLED_APPS list
+3. Create Models for Product, Customer, and Order
+In shop/models.py, define the models
+4. Create Views
+In shop/views.py, define the views to display products and handle customer orders
+5. Create Templates
+Create a directory called templates/shop/ for storing templates, and inside it, create the following HTML files
+-product_list.html
+-product_detail.html
+-order_confirmation.html
+6. Create URLs
+-shop/urls.py
+-ecommerce/urls.py
+7. Run Migrations
+Before running the server, create and apply the migrations to create the database tables:
+python manage.py makemigrations
+python manage.py migrate
+8. Create Superuser (for Admin Panel)
+Create a superuser to access the Django admin panel for managing products and orders:
+
+bash
+Copy code
+python manage.py createsuperuser
+9. Run the Server
+Finally, start the development server to run your e-commerce application:
+
+bash
+Copy code
+python manage.py runserver
+Visit http://localhost:8000/ to see your e-commerce site in action!
+
+##Admin Panel##
+You can manage the products and orders via the Django admin panel at http://localhost:8000/admin/
+
 
 
 
